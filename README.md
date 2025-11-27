@@ -1,61 +1,149 @@
-# Ex.No:1(A) INTRODUCTION TO JAVA PROGRAMMING, DATA TYPES, VARIABLES AND OPERATORS
+# Ex.No:3(A) INHERITANCE AND AGGREGATION
 
 ## QUESTION:
-Lovely has just started learning Java and is very excited about how to display messages on the screen. Her first mission is to understand how different types of print statements work:
 
-System.out.print() → prints on the same line
+Create a Super class Person with fields name and age. Create a subclass Student that inherits from Person and adds a field marks (integer). Implement a method in Student called calculateGrade() which returns the grade based on the marks:
 
-System.out.println() → prints and moves to the next line
+Marks ≥ 90: Grade A
 
-System.out.printf() → prints formatted output
+Marks ≥ 75 and < 90: Grade B
 
+Marks ≥ 50 and < 75: Grade C
+
+Marks < 50: Grade F
 
 ## AIM:
-To write a Java program that demonstrates the use of variables, data types, operators, and different print statements (print, println, and printf).
+
+To Create a Super class Person with fields name and age. Create a subclass Student that inherits from Person and adds a field marks (integer). Implement a method in Student called calculateGrade() which returns the grade based on the marks:
 
 ## ALGORITHM :
-1.	Start the program.
-2.	Import the required package java.util.* (optional).
-3.	Declare variables of different data types (int, float, char, String).
-4.	Perform simple arithmetic operations using operators.
-5.	Use System.out.print() to display output on the same line.
-6.	Use System.out.println() to display output on the next line.
-7.	Use System.out.printf() to print formatted output.
-8.	End the program.
+
+1.Start
+
+2.Create a superclass Person with:
+
+Variables: name, age
+
+Constructor to initialize them
+
+3.Create a subclass Student that extends Person and adds:
+
+Variable: marks
+
+Constructor to initialize name, age, marks
+
+Method calculateGrade():
+
+If marks ≥ 90 → return "A"
+
+If marks ≥ 80 → return "B"
+
+If marks ≥ 70 → return "C"
+
+If marks ≥ 60 → return "D"
+
+Else return "F"
+
+4.In main():
+
+Create Student object
+
+Call calculateGrade()
+
+Print name, age, marks, and grade
+
+5.End
 
 ## PROGRAM:
- ```
+
+```
 /*
-Program to implement variables and Operators using Java
-Developed by: Pravin kumar G
-Register Number:212222230109
+Program to implement a Inheritance and Aggregation using Java
+Developed by: Karthick P
+RegisterNumber:  212222100021
 */
 ```
 
-## Sourcecode.java:
+## SOURCE CODE:
+
 ```
-import java.util.*;
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner sc=new Scanner(System.in);
-        String name=sc.next();
-        int age=sc.nextInt();
-        double num=sc.nextDouble();
-        System.out.println("Hello, "+name);
-        System.out.println("You are "+age+" years old");
-        System.out.printf("Your favorite number is %.2f ",num);
+import java.util.Scanner;
+
+// Superclass
+class Person {
+    String name;
+    int age;
+
+    // Constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display person details
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Subclass
+class Student extends Person {
+    int marks;
+
+    // Constructor
+    Student(String name, int age, int marks) {
+        super(name, age);  // Call parent constructor
+        this.marks = marks;
+    }
+
+    // Method to calculate grade
+    String calculateGrade() {
+        if (marks >= 90) {
+            return "Grade: A";
+        } else if (marks >= 75) {
+            return "Grade: B";
+        } else if (marks >= 50) {
+            return "Grade: C";
+        } else {
+            return "Grade: F";
+        }
+    }
+
+    // Display student details
+    void displayStudentDetails() {
+        displayDetails(); // Call Person method
+        System.out.println("Marks: " + marks);
+        System.out.println(calculateGrade());
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Taking input
+        String name = sc.nextLine();
+        int age = sc.nextInt();
+        int marks = sc.nextInt();
+
+        // Create student with input values
+        Student s = new Student(name, age, marks);
+
+        // Display details
+        s.displayStudentDetails();
+
+        sc.close();
     }
 }
 ```
 
 ## OUTPUT:
-<img width="766" height="385" alt="Screenshot 2025-11-14 105812" src="https://github.com/user-attachments/assets/8ca3a2e4-e913-4c3f-a8bf-73827075ab57" />
 
+<img width="535" height="571" alt="image" src="https://github.com/user-attachments/assets/c3c69cf3-ec0b-449c-8e49-38181b83a87d" />
 
 ## RESULT:
-Thus, the Java program demonstrating variables, data types, operators, and print statements was successfully executed.
 
-
+The program successfully inherits fields from the Person class, adds marks in the Student class, and calculates the student’s grade based on the marks provided.
 
